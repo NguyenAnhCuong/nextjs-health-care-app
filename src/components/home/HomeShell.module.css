@@ -1,0 +1,235 @@
+.shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 20px 16px;
+  background: #0b1220;
+  color: #e5e7eb;
+  border-right: 1px solid rgba(148, 163, 184, 0.16);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 10px 14px;
+}
+
+.brandMark {
+  height: 34px;
+  width: 34px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 55%, #22c55e 100%);
+  box-shadow: 0 14px 30px rgba(2, 132, 199, 0.18);
+}
+
+.brandTitle {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brandTitle strong {
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.brandTitle span {
+  font-size: 12px;
+  color: rgba(203, 213, 225, 0.82);
+}
+
+.navGroups {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 6px;
+  overflow: auto;
+}
+
+.groupLabel {
+  font-size: 11px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(148, 163, 184, 0.85);
+  padding: 10px 10px 6px;
+}
+
+.navItem {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 10px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.navItem:hover {
+  background: rgba(148, 163, 184, 0.12);
+  border-color: rgba(148, 163, 184, 0.16);
+}
+
+.navItemActive {
+  background: rgba(14, 165, 233, 0.16);
+  border-color: rgba(14, 165, 233, 0.35);
+}
+
+.navIcon {
+  height: 18px;
+  width: 18px;
+  color: rgba(226, 232, 240, 0.95);
+}
+
+.navText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.navText strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(226, 232, 240, 0.98);
+}
+
+.navText span {
+  font-size: 12px;
+  color: rgba(148, 163, 184, 0.92);
+}
+
+.content {
+  min-width: 0;
+  padding: 26px 28px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.title h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.title p {
+  color: #475569;
+  max-width: 68ch;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+}
+
+.card {
+  grid-column: span 6;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 18px;
+  padding: 16px 16px;
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.06);
+}
+
+.card h3 {
+  font-size: 14px;
+  font-weight: 650;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.55;
+}
+
+.mobileDock {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .content {
+    padding: 18px 16px 84px;
+  }
+
+  .card {
+    grid-column: span 12;
+  }
+
+  .mobileDock {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px 12px;
+    background: rgba(11, 18, 32, 0.92);
+    border-top: 1px solid rgba(148, 163, 184, 0.22);
+    backdrop-filter: blur(14px);
+    gap: 10px;
+    overflow-x: auto;
+  }
+
+  .dockItem {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    background: rgba(148, 163, 184, 0.10);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgba(226, 232, 240, 0.95);
+  }
+
+  .dockItemActive {
+    background: rgba(14, 165, 233, 0.18);
+    border-color: rgba(14, 165, 233, 0.35);
+  }
+
+  .dockIcon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
