@@ -19,6 +19,7 @@ import {
   useTheme,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import QuizIcon from "@mui/icons-material/Quiz";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import styles from "./HomeShell.module.css";
 import { useRouter } from "next/navigation";
@@ -39,7 +40,7 @@ type NavItem = {
   label: string;
   description: string;
   path: string;
-  group: "Health Tracking" | "Analytics" | "User";
+  group: "Study" | "Progress" | "User";
   icon: (props: { className?: string }) => React.ReactNode;
 };
 
@@ -107,26 +108,8 @@ function IconActivity({ className }: { className?: string }) {
   );
 }
 
-function IconChart({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M4 19V5" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M4 19h16" />
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M8 15l3-3 3 2 5-6"
-      />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M18 8h1" />
-    </svg>
-  );
+function IconQuiz({ className }: { className?: string }) {
+  return <QuizIcon fontSize="small" className={className} />;
 }
 
 function IconTarget({ className }: { className?: string }) {
@@ -142,35 +125,6 @@ function IconTarget({ className }: { className?: string }) {
       <circle cx="12" cy="12" r="9" />
       <circle cx="12" cy="12" r="5" />
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 7v5l3 2" />
-    </svg>
-  );
-}
-
-function IconSparkles({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M12 2l1.2 4.2L17 8l-3.8 1.8L12 14l-1.2-4.2L7 8l3.8-1.8L12 2z"
-      />
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M5 12l.8 2.6L8 16l-2.2 1.4L5 20l-.8-2.6L2 16l2.2-1.4L5 12z"
-      />
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M19 12l.7 2.3L22 15.5l-2.3 1.2L19 19l-.7-2.3L16 15.5l2.3-1.2L19 12z"
-      />
     </svg>
   );
 }
@@ -247,75 +201,54 @@ export default function HomeShell({ children }: { children: React.ReactNode }) {
     () => [
       {
         key: "dashboard",
-        label: "Bảng Thống Kê",
-        description: "Tổng quan về sức khỏe của bạn hôm nay.",
-        group: "Health Tracking",
+        label: "Tổng Quan",
+        description: "Tiến độ học từ vựng và chuỗi ngày học tập của bạn.",
+        group: "Study",
         path: "/",
         icon: IconGrid,
       },
       {
         key: "health-record",
-        label: "Sức Khỏe",
-        description: "Chỉ số sức khỏe, thuốc, dị ứng, thăm khám.",
-        group: "Health Tracking",
-        path: "/health-record",
+        label: "Học Từ Vựng",
+        description: "Xây dựng vốn từ vựng với các bài học.",
+        group: "Study",
+        path: "/learning",
         icon: IconFileText,
       },
       {
         key: "activity",
-        label: "Hoạt Động",
-        description: "Bước chân, tập luyện, giấc ngủ.",
-        group: "Health Tracking",
-        path: "/activity",
+        label: "Luyện tập",
+        description:
+          "Sử dụng thẻ ghi nhớ và luyện tập câu để tăng khả năng ghi nhớ.",
+        group: "Study",
+        path: "/practice",
         icon: IconActivity,
       },
       {
         key: "statistics",
-        label: "Phân Tích",
-        description: "Xu hướng theo thời gian.",
-        group: "Analytics",
-        path: "/statistics",
-        icon: IconChart,
+        label: "Câu đố",
+        description:
+          "Kiểm tra kiến thức của bạn với các bài kiểm tra từ vựng nhanh.",
+        group: "Progress",
+        path: "/quizzes",
+        icon: IconQuiz,
       },
       {
         key: "goals",
         label: "Mục Tiêu",
-        description: "Theo dõi mục tiêu sức khỏe.",
-        group: "Analytics",
+        description:
+          "Theo dõi mục tiêu hàng ngày: từ mới, buổi ôn tập và các cột mốc quan trọng..",
+        group: "Progress",
         path: "/goals",
         icon: IconTarget,
       },
       {
-        key: "health-insights",
-        label: "Cải thiện Sức Khỏe",
-        description: "Gợi ý cá nhân hóa để cải thiện sức khỏe của bạn.",
-        group: "Analytics",
-        icon: IconSparkles,
-        path: "/health-insights",
-      },
-      {
         key: "profile",
-        label: "Hồ Sơ",
-        description: "Thông tin tài khoản và thông tin cá nhân của bạn.",
+        label: "Hồ Sơ Cá Nhân",
+        description: "Quản lý tài khoản và tùy chọn của bạn.",
         group: "User",
         icon: IconUser,
         path: "/profile",
-      },
-      {
-        key: "setting",
-        label: "Cài Đặt",
-        description: "Cài đặt và cấu hình ứng dụng.",
-        group: "User",
-        icon: IconSettings,
-        path: "/setting",
-      },
-      {
-        key: "logout",
-        label: "Đăng Xuất",
-        description: "Đăng xuất khỏi phiên làm việc này.",
-        group: "User",
-        icon: IconLogout,
-        path: "#",
       },
     ],
     [],
@@ -328,8 +261,8 @@ export default function HomeShell({ children }: { children: React.ReactNode }) {
 
   const grouped = useMemo(() => {
     return {
-      "Health Tracking": items.filter((i) => i.group === "Health Tracking"),
-      Analytics: items.filter((i) => i.group === "Analytics"),
+      Study: items.filter((i) => i.group === "Study"),
+      Progress: items.filter((i) => i.group === "Progress"),
       User: items.filter((i) => i.group === "User"),
     } satisfies Record<NavItem["group"], NavItem[]>;
   }, [items]);
@@ -361,20 +294,19 @@ export default function HomeShell({ children }: { children: React.ReactNode }) {
               "linear-gradient(135deg, #0ea5e9 0%, #6366f1 55%, #22c55e 100%)",
           }}
         >
-          HC
+          VC
         </Avatar>
         <Box>
           <Typography
-            variant="subtitle1"
             fontWeight={700}
             letterSpacing="-0.04em"
             color="white"
-            fontSize="1.5rem"
+            fontSize="1.25rem"
           >
-            Health Care
+            Vocabulary Coach
           </Typography>
-          <Typography variant="caption" color="white" fontSize="0.8rem">
-            Theo dõi • Phân tích • Cải thiện
+          <Typography variant="caption" color="white" fontSize="0.875rem">
+            Học từ vựng • Luyện tập mỗi ngày • Tự tin nói chuyện
           </Typography>
         </Box>
       </Toolbar>
@@ -387,10 +319,10 @@ export default function HomeShell({ children }: { children: React.ReactNode }) {
           sx={{ px: 2.25, pt: 1, pb: 0.5 }}
           color="text.secondary"
         >
-          Health Tracking
+          Study
         </Typography>
         <List dense disablePadding>
-          {grouped["Health Tracking"].map((item) => (
+          {grouped.Study.map((item) => (
             <ListItemButton
               key={item.key}
               selected={active === item.key}
@@ -409,10 +341,10 @@ export default function HomeShell({ children }: { children: React.ReactNode }) {
           sx={{ px: 2.25, pt: 2, pb: 0.5 }}
           color="text.secondary"
         >
-          Analytics
+          Progress
         </Typography>
         <List dense disablePadding>
-          {grouped.Analytics.map((item) => (
+          {grouped.Progress.map((item) => (
             <ListItemButton
               key={item.key}
               selected={active === item.key}
@@ -492,6 +424,11 @@ export default function HomeShell({ children }: { children: React.ReactNode }) {
 
           {!isMobile && (
             <IconButton
+              sx={{
+                background: "#0000001c",
+                cursor: "pointer",
+                "&:hover": { background: "#0c0c141c" },
+              }}
               size="small"
               onClick={() => setSidebarOpen((prev) => !prev)}
             >

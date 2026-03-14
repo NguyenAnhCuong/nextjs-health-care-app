@@ -3,8 +3,8 @@ import "./globals.css";
 import MuiThemeProvider from "@/components/providers/MuiThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Health Care App",
-  description: "Health Care App for managing your health",
+  title: "Vocabulary App",
+  description: "Vocabulary learning app for building your word bank",
 };
 
 export default function RootLayout({
